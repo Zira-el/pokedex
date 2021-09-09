@@ -1,6 +1,6 @@
-import './App.css';
+import './styles.css';
 
-function App() {
+function Main() {
   return (
     <div className="App">
       <h1>Pokedex</h1>
@@ -8,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;
