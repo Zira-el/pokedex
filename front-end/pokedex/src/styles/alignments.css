@@ -14,3 +14,8 @@
 .items-center{
     align-items: center;
 }
+
+.content-evenly{
+    justify-content: space-evenly;
+}
+
