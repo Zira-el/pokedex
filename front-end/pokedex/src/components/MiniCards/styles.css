@@ -3,8 +3,8 @@
     border: 1px solid #F57D31;
     box-sizing: border-box;
     border-radius: 8px;
-    width: 17%;
-    height: 70%;
+    width: 60%;
+    height: max-content;
 }
 
 .rodape{
@@ -19,7 +19,12 @@
 
 .container{
     height: 50vh;
-    margin: 3% 0 0 3%;
+    margin-top: 3%;
+    gap: 3%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    justify-items: center;
 }
 
 .container-imagem{
@@ -28,5 +33,4 @@
 
 .imagem{
     width: 50%;
-    height: min-content;
 }
