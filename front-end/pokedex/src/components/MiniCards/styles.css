@@ -1,0 +1,32 @@
+.cards{
+    background: rgba(255,255, 255, 0.2);
+    border: 1px solid #F57D31;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 17%;
+    height: 70%;
+}
+
+.rodape{
+    background-color: #F57D31;
+    height: 10vh;
+    border-radius: 0 0 8px 8px;
+}
+
+.numero{
+    margin-right: 5%;
+}
+
+.container{
+    height: 50vh;
+    margin: 3% 0 0 3%;
+}
+
+.container-imagem{
+    height: 70%;
+}
+
+.imagem{
+    width: 50%;
+    height: min-content;
+}

@@ -20,6 +20,8 @@ function Main() {
           <input placeholder='Pesquisa' type='text' className='pesquisa'/>
         </div>
       </div>
+   
+        <MiniCards />
      
     </div>
   );
