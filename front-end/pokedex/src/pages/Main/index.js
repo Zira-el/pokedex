@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css';
 import MiniCards from '../../components/MiniCards';
 import Pokeball from '../../assets/pokebola.png'
-import  pokedex  from '../../services/PokeAPI';
+import pokedex from '../../services/PokeAPI';
 
 function Main() {
+  const [pokemons, setPokemons] = useState([]);
 
+  async function dadosPokemons() {
+    const dados = await pokedex();
+    setPokemons(dados);
+  }
+  
   useEffect(() => {
-    pokedex()
-  })
+    dadosPokemons();
+  }, [])
 
   return (
     <div className="App">
@@ -27,7 +33,9 @@ function Main() {
         </div>
       </div>
    
-        <MiniCards />
+        <MiniCards 
+        dados={pokemons} 
+        />
      
     </div>
   );
