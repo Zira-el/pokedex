@@ -6,15 +6,20 @@ import pokedex from '../../services/PokeAPI';
 
 function Main() {
   const [pokemons, setPokemons] = useState([]);
+  const [page, setPage] = useState(0)
+
+  function handleNextPage(next) {
+    setPage(next);
+  }
 
   async function dadosPokemons() {
-    const dados = await pokedex();
-    setPokemons(dados);
+    const dados = await pokedex(page);
+    setPokemons([...pokemons, ...dados]);
   }
   
   useEffect(() => {
     dadosPokemons();
-  }, [])
+  }, [page])
 
   return (
     <div className="App">
@@ -25,7 +30,7 @@ function Main() {
             <img src={Pokeball} alt='pokebola' className='pokebola'/>
           </div>
           <div className='poppins-bold'> 
-            <h1 className='titulo' >Pokedex</h1>
+            <h1 className='titulo'>Pokedex</h1>
           </div>
         </div>
         <div className='barraPesquisa'>
@@ -35,8 +40,10 @@ function Main() {
    
         <MiniCards 
         dados={pokemons} 
+        page={handleNextPage}
         />
-     
+
+        
     </div>
   );
 }

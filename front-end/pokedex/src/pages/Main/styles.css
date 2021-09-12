@@ -1,9 +1,12 @@
-.App {
-  text-align: center;
+body{
   background-image: url(../../assets/pokedex-wallpaper.jpg);
-  height: 100vh;
-  background-repeat: no-repeat;
+  background-attachment: scroll;
   background-size: cover;
+}
+
+.App {
+  text-align: center; 
+  height: 100vh;
 }
 
 .titulo{
@@ -37,3 +40,4 @@
   height: 120%;
   text-align: center;
 }
+

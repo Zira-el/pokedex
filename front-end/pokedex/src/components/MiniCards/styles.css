@@ -34,3 +34,9 @@
 .imagem{
     width: 50%;
 }
+
+#final{
+    height: 50px;
+    color:red;
+    width: 10%
+}
