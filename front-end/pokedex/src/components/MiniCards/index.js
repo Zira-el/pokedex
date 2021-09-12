@@ -1,54 +1,69 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
 
-function MiniCards({dados}) {
+function MiniCards({dados, page}) {
+
     const [shiny, setShiny] = useState([]);
-
-
-
     function handleFilterShiny(e, pokemon) {
         if(e.target.checked){
-            const sorte = [...shiny, pokemon];
-            sorte.sort((a,b) => {
-                if (a > b) return 1;
-                if (a < b) return -1
-                return 0
-            })
-
-            setShiny(sorte)
+            const ids = [...shiny, pokemon];
+            setShiny(ids)
         } else {
-            const sorte = [...shiny]
-            console.log(sorte)
-            const i = sorte.findIndex(id => id === pokemon)
-            sorte.splice(i, 1);
-            setShiny(sorte)
+            const ids = [...shiny]
+            const i = ids.findIndex(id => id === pokemon)
+            ids.splice(i, 1);
+            setShiny(ids)
         }
     }
 
+    useEffect(() => {
+        let contador = 0;
+        let observer = new IntersectionObserver((fim) => {
+           if(fim.some(entrada => entrada.isIntersecting)){
+            page(contador);
+            contador = contador + 6;
+           }
+        });
+        
+        let target = document.querySelector('#final');
+        observer.observe(target);
+        return () => observer.disconnect();
+    }, [])
+
     return(
-        <div className='container'>
-            {dados.map((pokemon, index) => (
-                <div className='cards flex-column'>
-                    <div className='numero flex-row content-end'>
-                        <span style={{color: 'red'}}>#000{pokemon.id}</span>
-                    </div>
-
-                    <div className='container-imagem flex-column content-center items-center'>
-                        <img src={shiny.find(IdPokemon => pokemon.id === IdPokemon  ) ? pokemon.sprites.front_shiny: pokemon.sprites.front_default }   alt='Pokemon' className='imagem'/>
-                        <input 
-                        type='checkbox' 
-                        key={dados.id}
-                        onChange={(e) => { handleFilterShiny(e, pokemon.id)}}
-                        />
-                    </div>
-
-                    <div className='rodape flex-column content-center'>
-                        <div className='nome'> 
-                            <span>{pokemon.name.toUpperCase()}</span>
+        <div className='geral'>
+            
+            <div className='container'>
+                {dados.map((pokemon, index) => (
+                    <div className='cards flex-column'>
+                        <div className='numero flex-row content-end'>
+                            <span style={{color: 'red'}}>#{("0000" + pokemon.id).slice(-4)}</span>
                         </div>
+
+                        <div className='container-imagem flex-column content-center items-center'>
+                            <img src={shiny.find(IdPokemon => pokemon.id === IdPokemon  ) ? pokemon.sprites.front_shiny: pokemon.sprites.front_default }   alt='Pokemon' className='imagem'/>
+                        </div>
+
+                        <div>
+                        <input 
+                            type='checkbox' 
+                            key={pokemon.id}
+                            onChange={(e) => { handleFilterShiny(e, pokemon.id)}}
+                            />
+                        <span style={{color: 'orangered'}}>Shiny</span>
+                        </div>
+
+                        <div className='rodape flex-column content-center'>
+                            <div className='nome'> 
+                                <span>{pokemon.name.toUpperCase()}</span>
+                            </div>
+                        </div>
+                        
                     </div>
-                </div>
-            ))}
+                ))}
+                <div id="final">
+            </div>
+            </div>
             
         </div>
     )
