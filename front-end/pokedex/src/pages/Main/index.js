@@ -6,21 +6,55 @@ import pokedex from '../../services/PokeAPI';
 
 function Main() {
   const [pokemons, setPokemons] = useState([]);
+  const [pokemon, setPokemon] = useState([]);
   const [page, setPage] = useState(0)
+  const [search, setSearch] = useState('');
+  const [nome, setNome] = useState('');
+  let contador = 0;
 
-  function handleNextPage(next) {
-    setPage(next);
+  function handleNextPage() {
+    setPage(contador);
+    contador = contador + 6
   }
 
-  async function dadosPokemons() {
+  function handleNome(e) {
+    if(e.key !== 'Enter') return
+    contador = 0;
+    console.log("o contador é", contador);
+    setNome(search);
+    setPokemons([])
+    setPage(0)
+  }
+
+  async function dadosPokemons(e) {
+    setNome('');
+    if(!nome){
+      setPokemon([]);
+    }
+    console.log(page);
     const dados = await pokedex(page);
     setPokemons([...pokemons, ...dados]);
   }
+
+  async function nomePokemon() {
+    const dados = await pokedex(nome.toLocaleLowerCase())
+    setPokemon([dados])
+  }
   
   useEffect(() => {
-    dadosPokemons();
-  }, [page])
+    if(!nome){
+      dadosPokemons();
+      return
+    }
 
+    if(nome){
+      nomePokemon();
+      return
+    }
+    
+  }, [nome, page])
+
+  
   return (
     <div className="App">
 
@@ -34,12 +68,19 @@ function Main() {
           </div>
         </div>
         <div className='barraPesquisa'>
-          <input placeholder='Pesquisa' type='text' className='pesquisa'/>
+          <input 
+           placeholder='Pesquisar pokemon' 
+           type='text' 
+           className='pesquisa'
+           value={search}
+           onChange={(e) => setSearch(e.target.value)}
+           onKeyDown={(e) => handleNome(e)}
+           />
         </div>
       </div>
    
         <MiniCards 
-        dados={pokemons} 
+        dados={nome ? pokemon : pokemons} 
         page={handleNextPage}
         />
 

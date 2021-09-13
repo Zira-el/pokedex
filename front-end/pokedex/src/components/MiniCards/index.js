@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './styles.css';
 
 function MiniCards({dados, page}) {
-
     const [shiny, setShiny] = useState([]);
     function handleFilterShiny(e, pokemon) {
         if(e.target.checked){
@@ -17,11 +16,9 @@ function MiniCards({dados, page}) {
     }
 
     useEffect(() => {
-        let contador = 0;
         let observer = new IntersectionObserver((fim) => {
            if(fim.some(entrada => entrada.isIntersecting)){
-            page(contador);
-            contador = contador + 6;
+                page();
            }
         });
         
