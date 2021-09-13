@@ -3,6 +3,13 @@ import './styles.css';
 
 function MiniCards({dados, page}) {
     const [shiny, setShiny] = useState([]);
+    console.log(dados)
+
+    if(dados.length === 1 && shiny.find(id => id !== dados[0].id)){
+        setShiny([]);
+        return
+    }
+
     function handleFilterShiny(e, pokemon) {
         if(e.target.checked){
             const ids = [...shiny, pokemon];
@@ -13,6 +20,7 @@ function MiniCards({dados, page}) {
             ids.splice(i, 1);
             setShiny(ids)
         }
+        return
     }
 
     useEffect(() => {

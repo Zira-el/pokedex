@@ -3,6 +3,7 @@ import './styles.css';
 import MiniCards from '../../components/MiniCards';
 import Pokeball from '../../assets/pokebola.png'
 import pokedex from '../../services/PokeAPI';
+import { toast } from 'react-toastify';
 
 function Main() {
   const [pokemons, setPokemons] = useState([]);
@@ -10,20 +11,18 @@ function Main() {
   const [page, setPage] = useState(0)
   const [search, setSearch] = useState('');
   const [nome, setNome] = useState('');
-  let contador = 0;
+  let contador = 0
 
   function handleNextPage() {
-    setPage(contador);
+    if (nome) return
+    setPage(contador)
     contador = contador + 6
+
   }
 
   function handleNome(e) {
     if(e.key !== 'Enter') return
-    contador = 0;
-    console.log("o contador é", contador);
     setNome(search);
-    setPokemons([])
-    setPage(0)
   }
 
   async function dadosPokemons(e) {
@@ -31,14 +30,27 @@ function Main() {
     if(!nome){
       setPokemon([]);
     }
-    console.log(page);
     const dados = await pokedex(page);
     setPokemons([...pokemons, ...dados]);
   }
 
   async function nomePokemon() {
     const dados = await pokedex(nome.toLocaleLowerCase())
-    setPokemon([dados])
+    console.log(dados)
+    
+    if(!dados.length){
+      toast.error('Nenhum pokemon encontrado', {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+      });
+      return
+    }
+    setPokemon(dados)
   }
   
   useEffect(() => {
@@ -78,9 +90,9 @@ function Main() {
            />
         </div>
       </div>
-   
+        
         <MiniCards 
-        dados={nome ? pokemon : pokemons} 
+        dados={pokemon.length ? pokemon : pokemons} 
         page={handleNextPage}
         />
 
