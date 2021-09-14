@@ -14,3 +14,11 @@
 .items-center{
     align-items: center;
 }
+
+.content-evenly{
+    justify-content: space-evenly;
+}
+
+.content-end{
+    justify-content: flex-end;
+}

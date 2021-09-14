@@ -1,0 +1,42 @@
+.cards{
+    background: rgba(255,255, 255, 0.2);
+    border: 1px solid #F57D31;
+    box-sizing: border-box;
+    border-radius: 8px;
+    width: 60%;
+    height: max-content;
+}
+
+.rodape{
+    background-color: #F57D31;
+    height: 8vh;
+    border-radius: 0 0 8px 8px;
+}
+
+.numero{
+    margin-right: 5%;
+}
+
+.container{
+    height: 50vh;
+    margin-top: 3%;
+    gap: 3%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+
+.container-imagem{
+    height: 70%;
+}
+
+.imagem{
+    width: 50%;
+}
+
+#final{
+    height: 50px;
+    color:red;
+    width: 10%
+}

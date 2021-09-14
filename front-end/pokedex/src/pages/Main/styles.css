@@ -1,4 +1,43 @@
+body{
+  background-image: url(../../assets/pokedex-wallpaper.jpg);
+  background-attachment: scroll;
+  background-size: cover;
+}
+
 .App {
+  text-align: center; 
+  height: 100vh;
+}
+
+.titulo{
+  gap: 1%;
+  color: OrangeRed;
+}
+
+.pokebola-div{
+  width: 3%;
+}
+
+.pokebola{
+  width: 120%;
+  height: 120%;
+}
+
+.top{
+  gap: 1%
+}
+
+.barraPesquisa{
+  margin-top: 1%;
+}
+
+.pesquisa{
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 40%;
+  height: 120%;
   text-align: center;
 }
 
