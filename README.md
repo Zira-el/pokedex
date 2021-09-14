@@ -31,3 +31,12 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
 -   **[React Toastify](https://www.npmjs.com/package/react-toastify)**
 
+> Veja o arquivo  [package.json](https://github.com/Zira-el/pokedex/blob/master/front-end/pokedex/package.json)
+
+#### 💪 **Utilitários**
+
+-   API:  **[POKE API](https://pokeapi.co/)** 
+
+## 🦸 Autor
+
+ <h3><b>Newton Menezes</b></h3></a>
