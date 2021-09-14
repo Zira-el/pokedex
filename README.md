@@ -11,6 +11,7 @@
 - [x] Retorno dos pokemons de seis em seis.
 - [x] Scroll infinito
 - [x] Retorno de um único pokemon através do nome na barra de pesquisa.
+- [x] Validação de Pokemon não encontrado.
 - [x] Opção de mudança entre as formas normais e shiny de cada pokemon.
 - [ ] Abertura de um modal com um card contendo todas as informações do pokemon ao clicar na imagem dos cards da tela principal.
 - [ ] Opção de Captura (adicionar aos favoritos) de um pokemon através de um botão no card.
