@@ -8,7 +8,7 @@
 
 ### ⚙️ Funcionalidades
 
-- [x] Retorno dos pokemons de seis em seis.
+- [x] Retorno dos pokemons de nove em nove.
 - [x] Scroll infinito
 - [x] Retorno de um único pokemon através do nome na barra de pesquisa.
 - [x] Validação de Pokemon não encontrado.
