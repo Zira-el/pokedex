@@ -3,7 +3,7 @@ async function pokedex(parametro) {
     let retornoPokemon = [];   
     try {
         if(parseInt(parametro, 10) || parametro === 0){
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=6&offset=${parametro}`, {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=9&offset=${parametro}`, {
             method: 'GET'
             });
     

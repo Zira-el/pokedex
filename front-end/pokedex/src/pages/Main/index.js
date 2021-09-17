@@ -16,7 +16,7 @@ function Main() {
   function handleNextPage() {
     if (nome) return
     setPage(contador)
-    contador = contador + 6
+    contador = contador + 9
 
   }
 
